@@ -18,7 +18,7 @@ def load(resources: List[str]) -> None:
         None: This function doesn't return any value. It prints the loading information on successful execution.
     """
     pipeline = dlt.pipeline(
-        pipeline_name="pokemon", destination='duckdb', dataset_name="pokemon_data"
+        pipeline_name="pokemon", destination='bigquery', dataset_name="pokemon_data"
     )
     load_info = pipeline.run(source().with_resources(*resources))
     print(load_info)
