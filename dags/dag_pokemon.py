@@ -40,7 +40,7 @@ def load_data():
     tasks = PipelineTasksGroup("pipeline_decomposed", use_data_folder=False, wipe_local_data=True)
 
     # import your source from pipeline script
-    from pokemon import pokemon
+    from pokemon import source
 
     # modify the pipeline parameters 
     pipeline = dlt.pipeline(pipeline_name='pipeline_name',
@@ -49,7 +49,7 @@ def load_data():
                      full_refresh=False # must be false if we decompose
                      )
     # create the source, the "serialize" decompose option will converts dlt resources into Airflow tasks. use "none" to disable it
-    tasks.add_run(pipeline, pokemon(), decompose="serialize", trigger_rule="all_done", retries=0, provide_context=True)
+    tasks.add_run(pipeline, source, decompose="serialize", trigger_rule="all_done", retries=0, provide_context=True)
 
 
 load_data()
