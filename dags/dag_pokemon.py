@@ -45,7 +45,7 @@ def load_data():
     # modify the pipeline parameters 
     pipeline = dlt.pipeline(pipeline_name='pipeline_name',
                      dataset_name='dataset_name',
-                     destination='duckdb',
+                     destination='bigquery',
                      full_refresh=False # must be false if we decompose
                      )
     # create the source, the "serialize" decompose option will converts dlt resources into Airflow tasks. use "none" to disable it
